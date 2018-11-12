@@ -7,17 +7,17 @@ import java.sql.*;
 public class DBJdbc {
 	
 	 
-	 Statement stmt = null;
+	 //Statement stmt = null;
 	 
 	//DB 서버에 연결하는 메소드 
-	public static Connection connectDB() {            
+	public void connectDB() {            
 		
-		Connection con = null;
+		//Connection con = null;
 		
 		try { 
 			Class.forName("com.mysql.cj.jdbc.Driver"); 
-			return DriverManager.getConnection("jdbc:mysql://192.168.0.32:3306/SAC?useSSL=false&serverTimezone=UTC", "SAC", "SAC");
-			
+			//return DriverManager.getConnection("jdbc:mysql://192.168.0.32:3306/SAC?useSSL=false&serverTimezone=UTC", "SAC", "SAC");
+			Connection con = DriverManager.getConnection("jdbc:mysql://192.168.0.32:3306/SAC?useSSL=false&serverTimezone=UTC", "SAC", "SAC");
 	    }
 		catch(SQLException e) { 
 			e.printStackTrace();
@@ -25,38 +25,58 @@ public class DBJdbc {
 		catch(ClassNotFoundException e) {
 			e.printStackTrace();
 		}
-		return con;
+		
 		
 	}	
 	
     // 데이터를 조회하는 메소드
     public  void select() { 
     	
-    	String a;
+    	//connectDB(); //DB에 접속 
     	
-    	connectDB();  //DB에 접속
-    	Statement stmt = con.createStatement();
-		ResultSet rs = stmt.executeQuery("select * from  SAC_USR"); 
-		while(rs.next()) {
-			a = rs.getString(1);
-			System.out.println("a = " + a);
-		}
+    	String sql = "SELECT * from SAC_SUR";
+    	
+    		try(Connection con = connectDB();
+    			PreparedStatement pstmt = con.prepareStatement(sql)){
+    			Statement stmt = con.createStatement(); 
+    			ResultSet rs = stmt.executeQuery(sql);
+    			while(rs.next()) {
+    				int id = rs.getInt(1);
+    				String name = rs.getString(2);
+    				System.out.println("Id = " + id + "name = " + name);
+    			} //while 
+    		} catch(SQLException e) {
+    			System.out.println(e.getMessage());
+    		}
     }	
+    
 	// 데이터를 업데이트하는 메소드 	
 	 public void update(int id, String name) {
 		 String sql = "UPDATE SAC_USR SET name = ? " + "WHERE id = ?";
 		 
-		 try {
-			 
-			 Connection con = this.connectDB(); 
-			 PreparedStatement pstmt = con.prepareStatement(sql);
+		 try (Connection con = this.connectDB();
+			 PreparedStatement pstmt = con.prepareStatement(sql)){
 			 pstmt.setInt(1, id);
 			 pstmt.setString(2, name);
 			 pstmt.executeUpdate();
 		 } catch(SQLException e) {
 			 System.out.println(e.getMessage());
 		 }
-			
-		
 	 }	
+	 
+	 //데이터를 삭제하는 메소드 
+	 public void delete(int id) { 
+		String sql = "DELETE FROM SAC_USR WHERE id = ?";
+		
+		try (Connection con = this.connectDB(); 
+				PreparedStatement pstmt = con.prepareStatement(sql)){
+			pstmt.setInt(1, id);
+			pstmt.executeUpdate(); 
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+	 }
+	 
+	 
+	 
 } //class

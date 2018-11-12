@@ -10,9 +10,12 @@ public class testCode {
 		
 		DBJdbc db = new DBJdbc();
 		
+		db.select();
+		
 		db.update(2, "ÀÌÁøÇü");
 		  
-			
+		db.delete(2);
+		
 	}
 
 }
