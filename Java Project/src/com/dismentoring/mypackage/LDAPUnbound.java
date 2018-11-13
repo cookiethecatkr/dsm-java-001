@@ -1,39 +1,13 @@
 package com.dismentoring.mypackage;
 
-import com.unboundid.ldap.sdk.DN; 
-// added jar file to the library
 import com.unboundid.ldap.sdk.LDAPConnection;
-import com.unboundid.ldap.sdk.*;
+import com.unboundid.ldap.sdk.LDAPException;
 
 public class LDAPUnbound {
     
-	public boolean connectLDAP(String username, String password) {
-		
-		boolean success = false; 
-	
-		
-	
-		LDAPConnection ldapConnection null; 
-		String loginDn = getLoginDn(username); 
-		
-		if (loginDn != null) {
-			try { 
-				ldapConnection = getUserConnection(loginDn, password); 
-				if(ldapConnection != null) { 
-					success = true; 
-				}
-			}
-			catch (Exception e) {
-				LOG.error(e.getMessage(), e);
-			}
-			finally {
-				if (ldapConnection !=null) {
-					ldapConnection.close();
-				}
-			}
-		}
-		
-		
+	public void connectSDK(String username, String password) throws LDAPException  {
+		// UnboundID SDK를 이용하여 LDAP 서버에 연결 
+		LDAPConnection ldap = new LDAPConnection("192.168.0.60",389,"cn=govmanager","GOVmoi!manager");
 	}
 	
 	
