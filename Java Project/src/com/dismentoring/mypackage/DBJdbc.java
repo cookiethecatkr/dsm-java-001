@@ -5,16 +5,14 @@ import java.sql.*;
 
 public class DBJdbc {
 	
-	 
 	 Statement stmt = null;
 	 
 	//DB 서버에 연결하는 메소드 
 	public static Connection connectDB() throws ClassNotFoundException, SQLException {            
 		
-		Connection con = null;
-		
-		 
-			Class.forName("com.mysql.cj.jdbc.Driver"); 
+		    Connection con = null;
+			
+		    Class.forName("com.mysql.cj.jdbc.Driver"); 
 			//return DriverManager.getConnection("jdbc:mysql://192.168.0.32:3306/SAC?useSSL=false&serverTimezone=UTC", "SAC", "SAC");
 			  con = DriverManager.getConnection("jdbc:mysql://192.168.0.32:3306/SAC?useSSL=false&serverTimezone=UTC", "SAC", "SAC");
 	    
@@ -22,7 +20,7 @@ public class DBJdbc {
 	}	
 	
     // 데이터를 조회하는 메소드
-    public void select() throws ClassNotFoundException { 
+    public static void select() throws ClassNotFoundException { 
     	
     	String sql = "SELECT * from SAC_USR";
     	
@@ -39,7 +37,7 @@ public class DBJdbc {
     }	
     
 	// 데이터를 업데이트하는 메소드 	
-	 public void update(String usridx, String id) throws ClassNotFoundException {
+	 public static void update(String usridx, String id) throws ClassNotFoundException {
 		 String sql = "UPDATE SAC_USR SET id = ? " + "WHERE usridx = ?";
 		 
 		 try (Connection con = connectDB();

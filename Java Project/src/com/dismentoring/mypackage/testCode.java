@@ -1,13 +1,17 @@
 package com.dismentoring.mypackage;
 
+import javax.naming.NamingException;
+
+import com.unboundid.ldap.sdk.LDAPException;
+
 public class testCode {
 
-	public static void main(String[] args) throws ClassNotFoundException {
+	public static void main(String[] args) throws ClassNotFoundException, NamingException, LDAPException {
 		
+		DBJdbc.select();         //JDBC API 사용하여 DB와 연결
+		LDAPJndi.connectJndi();  //JNDI API 사용하여 DB와 연결
+	    LDAPUnbound.connectSDK();  //UnboundID LDAP SDK API사용하여 DB와 연결
 		
-		
-		DBJdbc db = new DBJdbc();
-		db.select();
 		
 	}	
 		
@@ -17,13 +21,7 @@ public class testCode {
 		
 		
 		
-		//DBJdbc db = new DBJdbc();
 		
-		//db.select();
-		
-		//db.update(2, "이진형");
-		  
-		//db.delete(2);
 		
 	
 
