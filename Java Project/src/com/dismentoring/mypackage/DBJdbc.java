@@ -5,7 +5,7 @@ import java.sql.*;
 
 public class DBJdbc {
 	
-	 Statement stmt = null;
+	 static Statement stmt = null;
 	 
 	//DB 서버에 연결하는 메소드 
 	public static Connection connectDB() throws ClassNotFoundException, SQLException {            
@@ -35,7 +35,7 @@ public class DBJdbc {
     			System.out.println(e.getMessage());
     		}
     }	
-    
+    /*
 	// 데이터를 업데이트하는 메소드 	
 	 public static void update(String usridx, String id) throws ClassNotFoundException {
 		 String sql = "UPDATE SAC_USR SET id = ? " + "WHERE usridx = ?";
@@ -48,7 +48,33 @@ public class DBJdbc {
 		 } catch(SQLException e) {
 			 System.out.println(e.getMessage());
 		 }
-	 }	
+	 } */	
+	 
+	 //데이터를 업데이트하는 메소드  쉬운 버전
+	   public static void update1() throws ClassNotFoundException { 
+		   String sql ="UPDATE SAC_USR SET USRNM = 'jin' where ID = 'user'";
+		   
+		   try(Connection con=connectDB()){
+			   stmt =  con.createStatement();
+			   stmt.executeUpdate(sql);
+		   }catch(SQLException e) {
+			   System.out.println(e.getMessage());
+		   }
+	   }
+	   
+	   // 재미삼아 다른 방식으로 연습 
+	   public static void update2() throws ClassNotFoundException { 
+		   String sql ="UPDATE SAC_USR SET USRNM = 'test' where ID = 'user'";
+		   
+		   try(Connection con=connectDB()){
+			   PreparedStatement pstmt = con.prepareStatement(sql);
+			   pstmt.executeUpdate(sql);
+		   }catch(SQLException e) {
+			   System.out.println(e.getMessage());
+		   }
+	   }
+	   
+	   
 	 
 	 //데이터를 삭제하는 메소드 
 	 public void delete(String usridx) throws ClassNotFoundException { 
