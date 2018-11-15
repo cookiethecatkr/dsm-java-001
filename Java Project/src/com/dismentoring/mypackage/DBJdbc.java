@@ -22,14 +22,18 @@ public class DBJdbc {
     // 데이터를 조회하는 메소드
     public static void select() throws ClassNotFoundException { 
     	
-    	String sql = "SELECT * from SAC_USR";
+    	String sql = "SELECT * from test";
     	
     		try(Connection con = connectDB();
     			PreparedStatement pstmt = con.prepareStatement(sql)){
     			ResultSet rs = pstmt.executeQuery(sql);
     			while(rs.next()) {
-    				String id = rs.getString("ID");
-    				System.out.println(id);
+    				String a = rs.getString(1);
+    				String b = rs.getString(2); 
+    				String c = rs.getString(3); 
+    				System.out.print(" " + a + " ");
+    				System.out.print(" " + b + " ");
+    				System.out.println(" " + c + " ");
     			} 
     		} catch(SQLException e) {
     			System.out.println(e.getMessage());
@@ -52,7 +56,7 @@ public class DBJdbc {
 	 
 	 //데이터를 업데이트하는 메소드  쉬운 버전
 	   public static void update1() throws ClassNotFoundException { 
-		   String sql ="UPDATE SAC_USR SET USRNM = 'jin' where ID = 'user'";
+		   String sql ="UPDATE test SET USRNM = 'Lee' where USRIDX = '1'";
 		   
 		   try(Connection con=connectDB()){
 			   stmt =  con.createStatement();
@@ -64,7 +68,7 @@ public class DBJdbc {
 	   
 	   // 재미삼아 다른 방식으로 연습 
 	   public static void update2() throws ClassNotFoundException { 
-		   String sql ="UPDATE SAC_USR SET USRNM = 'test' where ID = 'user'";
+		   String sql ="UPDATE test SET USRNM = 'jin' where USRIDX = '1'";
 		   
 		   try(Connection con=connectDB()){
 			   PreparedStatement pstmt = con.prepareStatement(sql);
@@ -77,8 +81,8 @@ public class DBJdbc {
 	   
 	 
 	 //데이터를 삭제하는 메소드 
-	 public void delete(String usridx) throws ClassNotFoundException { 
-		String sql = "DELETE FROM SAC_USR WHERE id = ?";
+	 public static void delete(String usridx) throws ClassNotFoundException { 
+		String sql = "DELETE FROM test WHERE USRIDX = ?";
 		
 		try (Connection con = connectDB(); 
 				PreparedStatement pstmt = con.prepareStatement(sql)){
@@ -88,4 +92,16 @@ public class DBJdbc {
 			System.out.println(e.getMessage());
 		}
 	 }
+	 
+	 //데이터를 삽입하는 메소드  (다른 방식 연습) 
+	 public static void insert() throws SQLException, ClassNotFoundException {
+		 String sql = "INSERT INTO test "
+		 		+ "VALUES ('5','user','jin' )";
+		 Connection con = connectDB();
+			 PreparedStatement pstmt = con.prepareStatement(sql);
+			 pstmt.executeUpdate();
+			 
+		 
+	 }
+	 
 } //class
