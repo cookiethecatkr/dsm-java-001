@@ -34,10 +34,13 @@ public class DBJdbc {
     				System.out.print(" " + a + " ");
     				System.out.print(" " + b + " ");
     				System.out.println(" " + c + " ");
+    				
     			} 
+    			con.close();
     		} catch(SQLException e) {
     			System.out.println(e.getMessage());
     		}
+    		
     }	
     /*
 	// 데이터를 업데이트하는 메소드 	
@@ -61,6 +64,7 @@ public class DBJdbc {
 		   try(Connection con=connectDB()){
 			   stmt =  con.createStatement();
 			   stmt.executeUpdate(sql);
+			   con.close();
 		   }catch(SQLException e) {
 			   System.out.println(e.getMessage());
 		   }
@@ -73,6 +77,7 @@ public class DBJdbc {
 		   try(Connection con=connectDB()){
 			   PreparedStatement pstmt = con.prepareStatement(sql);
 			   pstmt.executeUpdate(sql);
+			   con.close();
 		   }catch(SQLException e) {
 			   System.out.println(e.getMessage());
 		   }
@@ -88,6 +93,7 @@ public class DBJdbc {
 				PreparedStatement pstmt = con.prepareStatement(sql)){
 			pstmt.setString(1, usridx);
 			pstmt.executeUpdate(); 
+			con.close();
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 		}
@@ -96,10 +102,11 @@ public class DBJdbc {
 	 //데이터를 삽입하는 메소드  (다른 방식 연습) 
 	 public static void insert() throws SQLException, ClassNotFoundException {
 		 String sql = "INSERT INTO test "
-		 		+ "VALUES ('5','user','jin' )";
+		 		+ "VALUES ('6','user','jin' )";
 		 Connection con = connectDB();
 			 PreparedStatement pstmt = con.prepareStatement(sql);
 			 pstmt.executeUpdate();
+			 con.close();
 			 
 		 
 	 }
