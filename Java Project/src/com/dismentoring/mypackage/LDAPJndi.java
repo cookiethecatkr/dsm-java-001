@@ -47,6 +47,7 @@ public class  LDAPJndi {
 			//System.out.println(sr);
 			System.out.println(attrs);
 		}	
+		ctx.close();
 	} // method
 	
 	//엔트리 추가 메서드
@@ -71,7 +72,7 @@ public class  LDAPJndi {
 		ctx.createSubcontext("cn=007이진형002,ou=제1과,ou=IT감사단,ou=감사원,o=government of korea,c=kr", attributes);
 		//ctx.createSubcontext("ou=감사원1,o=government of korea,c=kr", attributes);
 		System.out.println("입력됐을거에요. 입력됐는데 또 누르면 오류뜸");
-		
+		ctx.close();
 		
 		/* LDAPAttributeSet attrs = new LDAPAttributeSet();
 		String objectclass_values[] = { "top", "person", "op","11" };
@@ -88,7 +89,7 @@ public class  LDAPJndi {
 		DirContext ctx = connectJndi();
 		ctx.destroySubcontext("cn=007이진형002,ou=제1과,ou=IT감사단,ou=감사원,o=government of korea,c=kr");
 		System.out.println("삭제됐을꺼에요. 삭제됐는데 또 누르면 오류뜸.");
-		
+		ctx.close();
 	}
 	
 	
