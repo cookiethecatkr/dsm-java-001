@@ -15,25 +15,25 @@ public class testCode {
 
 	public static void main(String[] args) throws NamingException, ClassNotFoundException, IOException, SQLException, LDAPException, LDIFException   {
 		
-		//DBJdbc.select();         //JDBC API »ç¿ëÇÏ¿© DB¿Í ¿¬°á
-		//LDAPJndi.connectJndi();  //JNDI API »ç¿ëÇÏ¿© DB¿Í ¿¬°á
-	    //LDAPUnbound.connectSDK();  //UnboundID LDAP SDK API»ç¿ëÇÏ¿© DB¿Í ¿¬°á
-	    //DBMybatis.connectMybatis();  //myBatis ¸¦ ÀÌ¿ëÇÏ¿© DB¿Í ¿¬°á
-	    //DBJdbc.update1();        //DB update  (1¹ø Ç×¸ñ usrnmÀ» jin¿¡¼­ Lee·Î º¯°æ ) 
-		//DBJdbc.update2();        //DB  ¿ø·¡´ë·Î update
+		//DBJdbc.select();         //JDBC API ì‚¬ìš©í•˜ì—¬ DBì™€ ì—°ê²°
+		//LDAPJndi.connectJndi();  //JNDI API ì‚¬ìš©í•˜ì—¬ DBì™€ ì—°ê²°
+	    //LDAPUnbound.connectSDK();  //UnboundID LDAP SDK APIì‚¬ìš©í•˜ì—¬ DBì™€ ì—°ê²°
+	    //DBMybatis.connectMybatis();  //myBatis ë¥¼ ì´ìš©í•˜ì—¬ DBì™€ ì—°ê²°
+	    //DBJdbc.update1();        //DB update  (1ë²ˆ í•­ëª© usrnmì„ jinì—ì„œ Leeë¡œ ë³€ê²½ ) 
+		//DBJdbc.update2();        //DB  ì›ë˜ëŒ€ë¡œ update
 		
-		//DBJdbc.insert();       // µ¥ÀÌÅÍ »ğÀÔ 
-		//DBJdbc.delete("6");        // »èÁ¦¸¦ ¿øÇÏ´Â °ª ³ÖÀ¸¸é µÊ. 
+		//DBJdbc.insert();       // ë°ì´í„° ì‚½ì… 
+		//DBJdbc.delete("6");        // ì‚­ì œë¥¼ ì›í•˜ëŠ” ê°’ ë„£ìœ¼ë©´ ë¨. 
 		
-		//2Â÷ Ãß°¡ ³»¿ë  
+		//2ì°¨ ì¶”ê°€ ë‚´ìš©  
 		
-		//LDAPJndi.lookupJndi();      //JNDI¸¦ ÀÌ¿ëÇØ¼­ ¿£Æ®¸® Á¶È¸
-		//LDAPJndi.insertJndi();    //JNDI¸¦ ÀÌ¿ëÇØ¼­ ¿£Æ®¸® Ãß°¡  (cn=007ÀÌÁøÇü002,ou=Á¦1°ú,ou=IT°¨»ç´Ü,ou=°¨»ç¿ø,o=government of korea,c=kr)
-		//LDAPJndi.deleteJndi();    //JNDI¸¦ ÀÌ¿ëÇÏ¿© ¿£Æ®¸® »èÁ¦  (À§¿¡ ÀÔ·ÂÇÑ °Å »èÁ¦) 
-		//LDAPUnbound.searchSDK();    //UnboundID LDAP SDK¸¦ »ç¿ëÇÏ¿© Á¶È¸ 
-		//LDAPUnbound.addSDK();         //UnboundID LDAP SDK¸¦ »ç¿ëÇÏ¿© Ãß°¡
-		//LDAPUnbound.modifySDK();       //UnboundID LDAP SDK¸¦ »ç¿ëÇÏ¿© ¼öÁ¤ 
-		//LDAPUnbound.deleteSDK();        //À§¿¡ Ãß°¡ÇÑ ³»¿ëÀ» Áö¿ò. 007ÀÌÁøÇü005ÆÄÀÏ »èÁ¦
+		//LDAPJndi.lookupJndi();      //JNDIë¥¼ ì´ìš©í•´ì„œ ì—”íŠ¸ë¦¬ ì¡°íšŒ
+		//LDAPJndi.insertJndi();    //JNDIë¥¼ ì´ìš©í•´ì„œ ì—”íŠ¸ë¦¬ ì¶”ê°€  (cn=007ì´ì§„í˜•002)
+		//LDAPJndi.deleteJndi();    //JNDIë¥¼ ì´ìš©í•˜ì—¬ ì—”íŠ¸ë¦¬ ì‚­ì œ  (ìœ„ì— ì…ë ¥í•œ ê±° ì‚­ì œ) 
+		//LDAPUnbound.searchSDK();    //UnboundID LDAP SDKë¥¼ ì‚¬ìš©í•˜ì—¬ ì¡°íšŒ 
+		//LDAPUnbound.addSDK();         //UnboundID LDAP SDKë¥¼ ì‚¬ìš©í•˜ì—¬ ì¶”ê°€
+		//LDAPUnbound.modifySDK();       //UnboundID LDAP SDKë¥¼ ì‚¬ìš©í•˜ì—¬ ìˆ˜ì • 
+		//LDAPUnbound.deleteSDK();        //ìœ„ì— ì¶”ê°€í•œ ë‚´ìš©ì„ ì§€ì›€. 007ì´ì§„í˜•005íŒŒì¼ ì‚­ì œ
 	}	
 		
 	
