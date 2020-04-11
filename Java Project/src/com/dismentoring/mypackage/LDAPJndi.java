@@ -15,21 +15,21 @@ import javax.naming.directory.SearchControls;
 
 public class  LDAPJndi {
 	
-	//JNDI API¸¦ »ç¿ëÇÏ¿© ¼­¹ö¿Í ¿¬°á (Connecting to LDAP server using JNDI)
+	//JNDI APIë¥¼ ì‚¬ìš©í•˜ì—¬ ì„œë²„ì™€ ì—°ê²° (Connecting to LDAP server using JNDI)
 	public static  DirContext connectJndi() throws NamingException {
 		
 		Hashtable<String, String> env = new Hashtable<String, String>(); 
 		env.put(Context.INITIAL_CONTEXT_FACTORY, "com.sun.jndi.ldap.LdapCtxFactory");
 		env.put(Context.PROVIDER_URL, "ldap://192.168.0.60:389");
 		env.put(Context.SECURITY_AUTHENTICATION, "simple");
-		env.put(Context.SECURITY_PRINCIPAL, "cn=govmanager");
-		env.put(Context.SECURITY_CREDENTIALS, "GOVmoi!manager");
+		env.put(Context.SECURITY_PRINCIPAL, "1");
+		env.put(Context.SECURITY_CREDENTIALS, "2");
 		DirContext ctx = new InitialDirContext(env); 
 		//LdapContext ctx = new InitialLdapContext(env,null);
 		return ctx;
 	} 
 	
-	//¿£Æ®¸® Á¶È¸ ¸Ş¼­µå
+	//ì—”íŠ¸ë¦¬ ì¡°íšŒ ë©”ì„œë“œ
 	public static void lookupJndi() throws NamingException {
 		DirContext ctx = connectJndi();
 		//LdapContext ctx = (LdapContext) connectJndi();
@@ -50,7 +50,7 @@ public class  LDAPJndi {
 		ctx.close();
 	} // method
 	
-	//¿£Æ®¸® Ãß°¡ ¸Ş¼­µå
+	//ì—”íŠ¸ë¦¬ ì¶”ê°€ ë©”ì„œë“œ
 	public static void insertJndi( ) throws NamingException  {
 		DirContext ctx = connectJndi();
 		
@@ -68,10 +68,10 @@ public class  LDAPJndi {
 		attributes.put(sn);
 		attributes.put(cn);
 		
-		//ctx.createSubcontext("cn=009ÀÌÁøÇü001,ou=people,ou=°¨»ç¿ø,o=government of korea,c=kr", attributes);
-		ctx.createSubcontext("cn=007ÀÌÁøÇü002,ou=Á¦1°ú,ou=IT°¨»ç´Ü,ou=°¨»ç¿ø,o=government of korea,c=kr", attributes);
-		//ctx.createSubcontext("ou=°¨»ç¿ø1,o=government of korea,c=kr", attributes);
-		System.out.println("ÀÔ·ÂµÆÀ»°Å¿¡¿ä. ÀÔ·ÂµÆ´Âµ¥ ¶Ç ´©¸£¸é ¿À·ù¶ä");
+		
+		ctx.createSubcontext("cn=007ì´ì§„í˜•002,r", attributes);
+		
+		System.out.println("ì…ë ¥ëì„ê±°ì—ìš”. ì…ë ¥ëëŠ”ë° ë˜ ëˆ„ë¥´ë©´ ì˜¤ë¥˜ëœ¸");
 		ctx.close();
 		
 		/* LDAPAttributeSet attrs = new LDAPAttributeSet();
@@ -84,11 +84,11 @@ public class  LDAPJndi {
 		 */
 	} //method
 	
-	//µ¥ÀÌÅÍ»èÁ¦ ¸Ş¼­µå 
+	//ë°ì´í„°ì‚­ì œ ë©”ì„œë“œ 
 	public static void deleteJndi() throws NamingException {
 		DirContext ctx = connectJndi();
-		ctx.destroySubcontext("cn=007ÀÌÁøÇü002,ou=Á¦1°ú,ou=IT°¨»ç´Ü,ou=°¨»ç¿ø,o=government of korea,c=kr");
-		System.out.println("»èÁ¦µÆÀ»²¨¿¡¿ä. »èÁ¦µÆ´Âµ¥ ¶Ç ´©¸£¸é ¿À·ù¶ä.");
+		ctx.destroySubcontext("cn=007ì´ì§„í˜•002");
+		System.out.println("ì‚­ì œëì„êº¼ì—ìš”. ì‚­ì œëëŠ”ë° ë˜ ëˆ„ë¥´ë©´ ì˜¤ë¥˜ëœ¸.");
 		ctx.close();
 	}
 	
