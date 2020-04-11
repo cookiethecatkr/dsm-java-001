@@ -15,18 +15,18 @@ import com.unboundid.ldif.LDIFException;
 
 public class LDAPUnbound {
     
-	// UnboundID SDK¸¦ ÀÌ¿ëÇÏ¿© LDAP ¼­¹ö¿¡ ¿¬°á 
+	// UnboundID SDKë¥¼ ì´ìš©í•˜ì—¬ LDAP ì„œë²„ì— ì—°ê²° 
 	public static LDAPConnection connectSDK() throws LDAPException    {
 		
-		LDAPConnection ldap = new LDAPConnection("192.168.0.60",389,"cn=govmanager","GOVmoi!manager");
+		LDAPConnection ldap = new LDAPConnection("192.168.0.60",389,"cn=1","2");
 		return ldap;
 		
 	}
     
-	// Á¶È¸ÇÏ´Â ¸Ş¼Òµå 
+	// ì¡°íšŒí•˜ëŠ” ë©”ì†Œë“œ 
 	public static void searchSDK() throws LDAPException {
 		LDAPConnection ldap = connectSDK();
-		String filter = "cn=007ÀÌÁøÇü002";
+		String filter = "cn=007ì´ì§„í˜•002";
 		SearchRequest searchRequest = new SearchRequest("c=kr",SearchScope.SUB,filter);
 		System.out.println(searchRequest);
 		SearchResult searchResult = ldap.search(searchRequest);
@@ -34,31 +34,31 @@ public class LDAPUnbound {
 		ldap.close();
 	}
 	
-	//Ãß°¡ÇÏ´Â ¸Ş¼Òµå 
+	//ì¶”ê°€í•˜ëŠ” ë©”ì†Œë“œ 
 	public static void addSDK() throws LDAPException, LDIFException {
 		LDAPConnection ldap = connectSDK();
-		LDAPResult addResult =  ldap.add("dn:cn=007ÀÌÁøÇü005,ou=Á¦1°ú,ou=IT°¨»ç´Ü,ou=°¨»ç¿ø, o=government of korea,c=kr", "objectClass: top", "objectClass: user", "cn:jin");
+		LDAPResult addResult =  ldap.add("dn:cn=007ì´ì§„í˜•005");
 		System.out.println(addResult);
 		ldap.close();
 		
 	}
 	
-	//¼öÁ¤ÇÏ´Â ¸Ş¼Òµå
+	//ìˆ˜ì •í•˜ëŠ” ë©”ì†Œë“œ
 	public static void modifySDK() throws LDAPException, LDIFException {
 		LDAPConnection ldap = connectSDK();
-		//LDAPResult modifyResult = ldap.modify("dn:cn=007ÀÌÁøÇü005,ou=Á¦1°ú,ou=IT°¨»ç´Ü,ou=°¨»ç¿ø, o=government of korea,c=kr", "changetype : modify", "add:sn", "sn : lee ");
+		//LDAPResult modifyResult = ldap.modify("dn:cn=007ì´ì§„í˜•005,ou=ì œ1ê³¼,ou=ITê°ì‚¬ë‹¨,ou=ê°ì‚¬ì›, o=government of korea,c=kr", "changetype : modify", "add:sn", "sn : lee ");
 		Modification mod = new Modification(ModificationType.ADD,"sn","lee");
 		System.out.println(mod);
 		ldap.close();
 		
 	}
 	
-	//»èÁ¦ÇÏ´Â ¸Ş¼Òµå 
+	//ì‚­ì œí•˜ëŠ” ë©”ì†Œë“œ 
 	public static void deleteSDK() throws LDAPException {
 		LDAPConnection ldap = connectSDK();
-		DeleteRequest deleteRequest = new DeleteRequest("cn=007ÀÌÁøÇü005,ou=Á¦1°ú,ou=IT°¨»ç´Ü,ou=°¨»ç¿ø, o=government of korea,c=kr");
+		DeleteRequest deleteRequest = new DeleteRequest("cn=007ì´ì§„í˜•005");
 		ldap.delete(deleteRequest);
-		System.out.println("»èÁ¦µÊ");
+		System.out.println("ì‚­ì œë¨");
 		ldap.close();
 	}
 	
